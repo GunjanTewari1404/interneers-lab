@@ -17,7 +17,7 @@ class ProductRepository:
     
     def update(self, prod_id, prod_data):           # updates product on the basis of id
         try:
-            product = Product.objects.get(id=prod_id)
+            product=Product.objects.get(id=prod_id)
             for key, value in prod_data.items():
                 setattr(product, key, value)
             product.save()                          # save updated product
@@ -27,7 +27,7 @@ class ProductRepository:
     
     def delete(self, prod_id):                      # deletes product on the basis of id
         try:
-            product = Product.objects.get(id=prod_id)
+            product=Product.objects.get(id=prod_id)
             product.delete()
             return True
         except Product.DoesNotExist:
