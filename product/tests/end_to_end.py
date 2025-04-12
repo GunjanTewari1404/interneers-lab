@@ -19,7 +19,8 @@ class TestProductCategoryIntegration:
         res = api_client.post(url, payload, format='json')
         assert res.status_code == 200, f"Expected 200 OK, got {res.status_code}: {res.content}"
         data = res.json()
-        assert any(key in data for key in ("success", "message"))
+        assert "message" in data
+        assert data["message"] == "Product added to category successfully"
 
         updated_prod = Product.objects.get(id=prod.id)
         assert updated_prod.category.id == new_categ.id
@@ -37,7 +38,8 @@ class TestProductCategoryIntegration:
         res = api_client.delete(url, payload, format='json')
         assert res.status_code == 200, f"Expected 200 OK, got {res.status_code}: {res.content}"
         data = res.json()
-        assert any(key in data for key in ("success", "message"))
+        assert "message" in data
+        assert data["message"] == "Product removed from category successfully."
 
         updated_prod = Product.objects.get(id=prod.id)
         assert updated_prod.category is None
@@ -135,7 +137,9 @@ class TestProductCategoryIntegration:
 
         move_res = api_client.post(management_url, move_payload, format='json')
         assert move_res.status_code == 200
-        assert any(key in move_res.json() for key in ("success", "message"))
+        data = move_res.json()
+        assert "message" in data
+        assert data["message"] == "Product added to category successfully"
 
         #step 5 - verify prod belongs to new categ.
         prod_detail_url = reverse('product-detail', kwargs={'prod_id': product_id})
@@ -157,7 +161,9 @@ class TestProductCategoryIntegration:
         }
         remove_res = api_client.delete(management_url, remove_payload, format='json')
         assert remove_res.status_code == 200
-        assert any(key in remove_res.json() for key in ("success", "message"))
+        data = remove_res.json()
+        assert "message" in data
+        assert data["message"] == "Product removed from category successfully."
 
         #step 8 - verify categ. is now None
         final_prod_res = api_client.get(prod_detail_url)
