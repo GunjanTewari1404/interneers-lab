@@ -15,6 +15,9 @@ class ProductRepository:
         except Product.DoesNotExist:
             return None
     
+    def find_by_category(self, category):
+        return Product.objects.filter(category=category)
+        
     def update(self, prod_id, prod_data):           # updates product on the basis of id
         try:
             product=Product.objects.get(id=prod_id)
