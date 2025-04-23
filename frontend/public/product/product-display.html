@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Catalog</title>
+    <link rel="stylesheet" href="product-style.css">
+</head>
+<body>
+    <header>
+        <h1>Product Catalog</h1>
+    </header>
+    
+    <main>
+        <div class="page-container">
+            <aside class="filter-sidebar">
+                <div class="filter-header">
+                    <h2>Categories</h2>
+                    <button id="clear-filters" class="clear-filters-btn">Clear</button>
+                </div>
+                <div id="category-filters" class="category-filters">
+                    <div class="loading-categories">Loading categories...</div>
+                </div>
+            </aside>
+            
+            <div class="product-content">
+                <div class="product-container" id="product-list">
+                    <div class="loading">Loading products...</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="product-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div id="product-details">
+            </div>
+        </div>
+    </div>
+
+    <script src="product-display.js"></script>
+</body>
+</html>
