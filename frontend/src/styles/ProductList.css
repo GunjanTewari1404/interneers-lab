@@ -1,0 +1,32 @@
+.product-list {
+  max-width: 1400px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.product-list-title {
+  font-size: 1.75rem;
+  margin-bottom: 1.5rem;
+  color: #2c3e50;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 0.5rem;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.loading,
+.error-message,
+.no-products {
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.25rem;
+  color: #666;
+}
+
+.error-message {
+  color: #e74c3c;
+}
